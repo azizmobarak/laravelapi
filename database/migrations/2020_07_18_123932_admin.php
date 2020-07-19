@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Poster extends Migration
+class Admin extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Poster extends Migration
      */
     public function up()
     {
-        Schema::create('posters', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('username');
-            $table->string('email');
-            $table->timestamps();
-        });
+      Schema::create('admin', function (Blueprint $table) {
+          $table->bigIncrements('id');
+          $table->string('admin');
+          $table->string('password');
+          $table->timestamps();
+      });
     }
 
     /**

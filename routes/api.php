@@ -14,6 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Authorization for all
+//register : email , name , password
+Route::post('/adduser','UsersController@newuser');
+
+//login : email , password
+Route::post('/userlogin','UsersController@userlogin');
+
+//create order : price
+Route::post('/neworder','OrdersController@createorder');
+
+//just token
+Route::get('/userorders','OrdersController@userorders');
+
+//create admin : email , password
+Route::post('/newadmin','AdminController@createadmin');
+
+//admin login : email , password
+Route::post('/adminlogin','AdminController@adminlogin');
+

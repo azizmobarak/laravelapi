@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Resources\Articles as ArticleResources;
-use app\Articles;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +12,7 @@ use app\Articles;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::get('/test','ArticleController@some');
-Route::get('/posters',"PosterController@getposts");
+Route::get('/posters',"PosterController@getposters");
+Route::post('/addposter','PosterController@addnewposter');
+

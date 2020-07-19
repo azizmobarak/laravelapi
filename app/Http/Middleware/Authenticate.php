@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Request;
+use App\models\User;
 
 class Authenticate extends Middleware
 {
@@ -12,10 +14,19 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
-    protected function redirectTo($request)
-    {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
+
+    function verifytoken(Request $request){
+      $token = $request->header('Authorization');
+      if(gettype($token)=="NULL"){
+          return "false";
+      }else{
+         $id = User::where('remember_token',$token)->get("id");
+         if(count($id)==0)
+         {
+             return "false";
+         }else{
+            return $id[0]->id;
+         }
+      }
     }
 }
